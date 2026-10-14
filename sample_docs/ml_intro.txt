@@ -1,0 +1,19 @@
+Introduction to Machine Learning
+
+Machine learning is a field of artificial intelligence that focuses on developing algorithms and statistical models. These systems learn from data to make predictions or decisions without explicit programming.
+
+Supervised Learning
+
+Supervised learning uses labeled datasets to train algorithms. Common examples include classification tasks like spam detection and regression tasks like price prediction. Algorithms such as linear regression, decision trees, and neural networks fall into this category.
+
+Unsupervised Learning
+
+Unsupervised learning analyzes unlabeled data to find hidden patterns. Clustering techniques group similar data points together. Dimensionality reduction helps visualize complex datasets. Common applications include customer segmentation and anomaly detection.
+
+Reinforcement Learning
+
+Reinforcement learning involves agents learning through interaction with an environment. Agents receive rewards for good actions and penalties for bad ones. This approach powers game playing AI, robotics, and autonomous systems.
+
+Applications
+
+Machine learning has broad applications across industries. Healthcare uses it for diagnosis and drug discovery. Finance uses it for fraud detection and algorithmic trading. Natural language processing enables chatbots and translation services.

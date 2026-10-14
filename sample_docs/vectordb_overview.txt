@@ -1,0 +1,11 @@
+Vector Databases Overview
+
+Vector databases store and index high-dimensional embeddings.
+
+Why Vector Databases
+
+Traditional databases struggle with semantic search. Vector databases enable similarity search at scale.
+
+Common Use Cases
+
+Retrieval augmented generation relies on vector databases. Recommendation systems use similarity matching. Image and audio search benefit from embeddings.

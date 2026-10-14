@@ -1,0 +1,5 @@
+Natural Language Processing Basics
+
+NLP enables computers to understand human language. Tokenization splits text into words or sentences. Named entity recognition identifies people, places, organizations. Sentiment analysis determines emotional tone.
+
+Transformers have revolutionized NLP. BERT and GPT are popular transformer models. Word embeddings capture semantic meaning. Applications include translation, chatbots, and summarization.
