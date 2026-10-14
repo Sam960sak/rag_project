@@ -1,24 +1,44 @@
 # RAG Dynamic Parsing and Dynamic Chunking
 
-Complete working prototype comparing 3 chunking strategies for retrieval.
+A working prototype that compares three chunking strategies for retrieval, with
+format-aware parsing of TXT, PDF and DOCX files.
 
-## Dynamic Parsing
-Adapts extraction by file type (TXT/PDF/DOCX), preserving basic structure/page info.
-
-## Dynamic Chunking
-Uses three strategies: fixed-size, sentence-based, structure-aware/recursive.
-
-## Setup
-`ash
-pip install -r requirements.txt
-streamlit run run_app.py
-`
+See [`PROJECT_REPORT.md`](PROJECT_REPORT.md) for the full write-up (architecture,
+test cases, measured results, limitations).
 
 ## Features
-- Multi-format ingestion
-- 3 chunking strategies with counts/text/sizes
-- sentence-transformers + FAISS/NumPy cosine similarity
-- Top-3 retrieval per strategy
-- Streamlit UI with side-by-side/tabs + similarity scores
-- Evaluation with Recall@3 on 5+ sample questions
-- Evidence-only (no LLM required)
+
+- **Dynamic parsing**: format-aware extraction (TXT/PDF/DOCX); DOCX tables and
+  paragraphs; page markers stripped from embed text and kept as page metadata;
+  helpful errors for empty/scanned PDFs and unsupported files.
+- **Dynamic chunking**: fixed-size (sentence-snapped), sentence-based, and
+  structure-aware/recursive (headings stay with their paragraphs, oversized
+  sections split at sentence boundaries, tiny chunks merged).
+- **Retrieval**: `sentence-transformers` (`all-MiniLM-L6-v2`) with FAISS/NumPy
+  cosine similarity; the model is cached and shared across strategies.
+- **Evaluation**: gold-labelled Recall@1, Recall@3 and MRR, plus a defined,
+  auditable term-overlap metric (kept separate from similarity and accuracy).
+- **Streamlit UI**: side-by-side expandable result cards showing source filename,
+  page number, similarity, term overlap, chunk size and retrieval time.
+
+## Setup
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+## Run
+
+```powershell
+streamlit run run_app.py
+```
+
+Choose **Use sample documents**, enter a question, and click **Retrieve & Compare**.
+
+## Test
+
+```powershell
+python -m pytest -v
+```

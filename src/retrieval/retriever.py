@@ -5,10 +5,20 @@ try:
 except Exception:
     faiss = None
 
+_MODEL_CACHE: Dict[str, Any] = {}
+
+
+def get_model(model_name: str = 'all-MiniLM-L6-v2'):
+    """Load each SentenceTransformer once and reuse it across retrievers."""
+    if model_name not in _MODEL_CACHE:
+        from sentence_transformers import SentenceTransformer
+        _MODEL_CACHE[model_name] = SentenceTransformer(model_name)
+    return _MODEL_CACHE[model_name]
+
+
 class Retriever:
     def __init__(self, model_name='all-MiniLM-L6-v2'):
-        from sentence_transformers import SentenceTransformer
-        self.model = SentenceTransformer(model_name)
+        self.model = get_model(model_name)
         self.chunks = []
         self.embeddings = None
         self.index = None
